@@ -15,7 +15,7 @@ import listeners.PegarImagenListener;
 
 /**
  *
- * @author gabri
+ * @author carli
  */
 public class JInternalFrameCopiar extends javax.swing.JInternalFrame  {
 

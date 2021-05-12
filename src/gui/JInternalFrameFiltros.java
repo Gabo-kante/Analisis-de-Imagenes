@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 
 /**
  *
- * @author gabri
+ * @author carli
  */
 public class JInternalFrameFiltros extends javax.swing.JInternalFrame {
 

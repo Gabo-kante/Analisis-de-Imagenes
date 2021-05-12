@@ -6,18 +6,11 @@
 package gui;
 
 import java.awt.Image;
-import java.awt.event.ActionListener;
 import listeners.BinarioListener;
-import listeners.BinarioListener1;
-import listeners.ConvulcionListener;
 import listeners.CopiarSegmentoListener;
-import listeners.EcualizarListener;
-import listeners.ExpExponencialListener;
-import listeners.ExpLinealListener;
-import listeners.ExpLogaritmicaListener;
 import listeners.FiltroListener;
 import listeners.HistoListener;
-import listeners.IluminListener;
+import listeners.IluminaListener;
 import listeners.InternalFrameListener;
 import listeners.ModificarImagenListener;
 import listeners.PegarImagenListener;
@@ -36,21 +29,25 @@ public class JFramePrincipal extends javax.swing.JFrame {
     public JFramePrincipal() {
         initComponents();
         this.segmento = null;
+        BinarioListener bl = new BinarioListener(this);
+        IluminaListener il = new IluminaListener(this);
         this.jMenuItem1.addActionListener(new InternalFrameListener(this));
         this.jMenuItem2.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem3.addActionListener(new CopiarSegmentoListener(this));
         this.jMenuItem4.addActionListener(new PegarImagenListener(this));
         this.jMenuItem5.addActionListener(new FiltroListener(this));
         this.jMenuItem6.addActionListener(new HistoListener(this));
-        this.jMenuItem7.addActionListener(new BinarioListener(this));
-        this.jMenuItem8.addActionListener(new IluminListener(this));
-        this.jMenuItem9.addActionListener(new BinarioListener1(this));
-        this.jMenuItem11.addActionListener(new ExpLinealListener(this));
-        this.jMenuItem12.addActionListener(new ExpLogaritmicaListener(this));
-        this.jMenuItem13.addActionListener(new ExpExponencialListener(this));
-        this.jMenuItem14.addActionListener(new EcualizarListener(this));
-        this.jMenuItem15.addActionListener(new ConvulcionListener(this));
-
+        this.jMenuItem7.addActionListener(bl);
+        this.jMenuItem8.addActionListener(il);
+        this.jMenuItem9.addActionListener(bl);
+        this.jMenuItem10.addActionListener(bl);
+        this.jMenuItem11.addActionListener(bl);
+        this.jMenuItem12.addActionListener(il);
+        this.jMenuItem14.addActionListener(il);
+        this.jMenuItem15.addActionListener(il);
+        this.jMenuItem16.addActionListener(il);
+         this.jMenuItem17.addActionListener(il);
+         this.jMenuItem18.addActionListener(il);
     }
 
     public Image getSegmento() {
@@ -70,6 +67,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem13 = new javax.swing.JMenuItem();
         jDesktopPanePrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -79,16 +77,22 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
+
+        jMenuItem13.setText("jMenuItem13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,14 +128,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem5.setText("Filtros");
         jMenu2.add(jMenuItem5);
 
-        jMenuItem8.setText("Iluminar");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem8);
-
         jMenuItem6.setText("Histograma");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,49 +136,51 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem6);
 
-        jMenuItem7.setText("Binario");
-        jMenu2.add(jMenuItem7);
+        jMenu5.setText("Binarizar");
 
-        jMenuItem9.setText("Binario_2_umbrales");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem7.setText("1 umbral");
+        jMenu5.add(jMenuItem7);
+
+        jMenuItem9.setText("2 umbrales");
+        jMenu5.add(jMenuItem9);
+
+        jMenuItem10.setText("Automático");
+        jMenu5.add(jMenuItem10);
+
+        jMenuItem11.setText("Otsu");
+        jMenu5.add(jMenuItem11);
+
+        jMenu2.add(jMenu5);
+
+        jMenuItem8.setText("Iluminación");
+        jMenu2.add(jMenuItem8);
+
+        jMenu3.setText("Expansión");
+
+        jMenuItem12.setText("Lineal");
+        jMenu3.add(jMenuItem12);
+
+        jMenuItem14.setText("Logarítmica");
+        jMenu3.add(jMenuItem14);
+
+        jMenuItem15.setText("Exponencial");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jMenuItem15ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem9);
+        jMenu3.add(jMenuItem15);
 
-        jMenuItem10.setText("BinAuto");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem10);
+        jMenu2.add(jMenu3);
 
-        jMenuItem11.setText("ExpLineal");
-        jMenu2.add(jMenuItem11);
+        jMenuItem16.setText("Ecualizar");
+        jMenu2.add(jMenuItem16);
 
-        jMenuItem12.setText("ExpLog");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem12);
+        jMenuItem17.setText("Convolución");
+        jMenu2.add(jMenuItem17);
 
-        jMenuItem13.setText("ExpExponencial");
-        jMenu2.add(jMenuItem13);
-
-        jMenuItem14.setText("EcualizarHisto");
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem14);
-
-        jMenuItem15.setText("Convolucion");
-        jMenu2.add(jMenuItem15);
+        jMenuItem18.setText("Ruido Sal y pimienta");
+        jMenu2.add(jMenuItem18);
 
         jMenuBar1.add(jMenu2);
 
@@ -206,35 +204,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-       JInternalFrameImagen internalImagen = (JInternalFrameImagen)jDesktopPanePrincipal.getSelectedFrame();
-       Image imagenReferencia = internalImagen.getImagenOriginal();
-       // necesito obtener la referencia del internalframe con la imagen
-       // se abra el frame de binarizacion
-       
-       JInternalFrameBinarizacion internalBin = new JInternalFrameBinarizacion(imagenReferencia);
-       
-       this.jDesktopPanePrincipal.add(internalBin);
-       internalBin.setVisible(true);
-        
-
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
-
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,6 +248,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPanePrincipal;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -284,6 +258,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

@@ -31,7 +31,7 @@ public class HistoListener implements ActionListener{
             JInternalFrameImagen imagen = (JInternalFrameImagen) this.principal.getjDesktopPanePrincipal().getSelectedFrame();
             Histograma h = new Histograma(imagen.getImagenOriginal());
             h.calcularHistogramas();
-            Grafica nuevo = new Grafica("RGB", "Muestras", "Histograma de una imagen");
+            Grafica nuevo = new Grafica("RGB", "Pixeles", "Histograma de una imagen");
             nuevo.agregarSerie("Rojo", h.getR());
             nuevo.agregarSerie("Azul", h.getB());
             nuevo.agregarSerie("Verde",h.getG());

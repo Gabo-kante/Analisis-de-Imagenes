@@ -23,7 +23,8 @@ public class ModificarImagenListener implements ActionListener{
 
     public ModificarImagenListener(JFramePrincipal framePrincipal) {
         this.framePrincipal = framePrincipal;
-    }    
+    }
+    
     
     @Override
     public void actionPerformed(ActionEvent e) {

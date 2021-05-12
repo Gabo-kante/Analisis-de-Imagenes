@@ -53,20 +53,6 @@ public class Grafica {
         this.series.addSeries(serie);
 
     }
-
-    public void agregarSerie(String nombre, int[] datos) {
-
-        XYSeries serie = new XYSeries(nombre);
-        // agregar cada uno de los datos en la serie 
-        for (int x = 0; x < datos.length; x++) {
-            serie.add(x, datos[x]);
-            serie.add(x,0);
-        }
-        // agregamos la serie que se generÃ³ 
-        this.series.addSeries(serie);
-
-    }
-
     public JFreeChart getGrafica() {
         return this.grafica;
     }

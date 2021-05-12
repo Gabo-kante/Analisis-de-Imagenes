@@ -15,20 +15,20 @@ import java.awt.image.BufferedImage;
  *
  * @author carli
  */
-public class JInternalFrameBinario extends javax.swing.JInternalFrame {
+public class JInternalFrameBin2 extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form JInternalFrameBinario
+     * Creates new form JInternalFrameBin2
      */
     private JInternalFrameImagen internal;
     private Image imagenOriginal;
-    public JInternalFrameBinario(JInternalFrameImagen internal) {
-        
-        this.internal = internal;
+    public JInternalFrameBin2(JInternalFrameImagen internal) {
+        initComponents();
+         this.internal = internal;
         initComponents();
         int umbral = this.jSlider1.getValue();
         this.imagenOriginal = herramientas.HerramientasImagen.copiarImagen(internal.getImagenOriginal());
-        this.jButton1.addActionListener(new ActionListener(){
+        this.Binariza2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                  BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
@@ -43,7 +43,7 @@ public class JInternalFrameBinario extends javax.swing.JInternalFrame {
                         int b = color.getBlue(); // (0-255)
                         int med = (r+g+b)/3;
                         
-                        if(med<=jSlider1.getValue()){
+                        if(med<=jSlider2.getValue() && med>=jSlider1.getValue()){
                           bi.setRGB(j, m, Color.WHITE.getRGB());  
                         }else{
                            bi.setRGB(j, m, 0); 
@@ -66,38 +66,57 @@ public class JInternalFrameBinario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSlider2 = new javax.swing.JSlider();
         jSlider1 = new javax.swing.JSlider();
-        jButton1 = new javax.swing.JButton();
+        Binariza2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
 
-        jSlider1.setMajorTickSpacing(10);
+        jSlider2.setMajorTickSpacing(25);
+        jSlider2.setMaximum(255);
+        jSlider2.setPaintLabels(true);
+        jSlider2.setValue(0);
+
+        jSlider1.setMajorTickSpacing(25);
         jSlider1.setMaximum(255);
         jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setValue(17);
+        jSlider1.setValue(0);
 
-        jButton1.setText("BW");
+        Binariza2.setText("Binarizar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Binariza2)
+                        .addGap(252, 252, 252))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(53, Short.MAX_VALUE)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(24, 24, 24)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
+                .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(Binariza2)
+                .addGap(21, 21, 21))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(31, 31, 31)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(127, Short.MAX_VALUE)))
         );
 
         pack();
@@ -105,7 +124,8 @@ public class JInternalFrameBinario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Binariza2;
     private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSlider2;
     // End of variables declaration//GEN-END:variables
 }

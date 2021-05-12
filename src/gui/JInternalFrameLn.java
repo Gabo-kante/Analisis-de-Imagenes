@@ -5,7 +5,6 @@
  */
 package gui;
 
-import espacial.BinarioAutomatico;
 import espacial.Expansion;
 import java.awt.Image;
 
@@ -13,14 +12,14 @@ import java.awt.Image;
  *
  * @author carli
  */
-public class JInternalFrameEcualizar extends javax.swing.JInternalFrame {
+public class JInternalFrameLn extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form JInternalFrameEcualizame
+     * Creates new form JInternalFrameLn
      */
     private JInternalFrameImagen internal;
     private Image imagenOriginal;
-    public JInternalFrameEcualizar(JInternalFrameImagen internal,Image imagenOriginal) {
+    public JInternalFrameLn(JInternalFrameImagen internal, Image imagenOriginal) {
         this.internal = internal;
         this.imagenOriginal = imagenOriginal;
         initComponents();
@@ -56,24 +55,25 @@ public class JInternalFrameEcualizar extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(26, 26, 26)
+                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        Image i = Expansion.ecualizacion(BinarioAutomatico.devuelveHisto(imagenOriginal), imagenOriginal, this.jSlider1.getValue());
-        this.internal.setImagen(i);
+        
+        Image nueva = Expansion.ExpandeLog(this.imagenOriginal, this.jSlider1.getValue());
+        internal.setImagen(nueva);
     }//GEN-LAST:event_jSlider1StateChanged
 
 

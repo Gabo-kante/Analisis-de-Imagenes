@@ -14,7 +14,7 @@ import listeners.PegarImagenListener;
 
 /**
  *
- * @author gabri
+ * @author carli
  */
 public class JInternalFramePegar extends javax.swing.JInternalFrame implements ActionListener {
 

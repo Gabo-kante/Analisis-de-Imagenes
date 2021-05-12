@@ -9,10 +9,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-/**
- *
- * @author gabri
- */
+
 public class GraficaCom
 {    
     private String tituloGrafica;
