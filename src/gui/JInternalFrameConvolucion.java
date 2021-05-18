@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author carli
+ * @author gabri
  */
 public class JInternalFrameConvolucion extends javax.swing.JInternalFrame implements ActionListener{
 

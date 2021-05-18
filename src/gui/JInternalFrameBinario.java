@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 
 /**
  *
- * @author carli
+ * @author gabri
  */
 public class JInternalFrameBinario extends javax.swing.JInternalFrame {
 

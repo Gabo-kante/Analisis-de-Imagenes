@@ -11,7 +11,7 @@ import java.awt.Image;
 
 /**
  *
- * @author carli
+ * @author gabri
  */
 public class JInternalFrameEcualizar extends javax.swing.JInternalFrame {
 

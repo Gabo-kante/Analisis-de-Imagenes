@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 
 /**
  *
- * @author carli
+ * @author gabri
  */
 public class JInternalFrameIluminacion extends javax.swing.JInternalFrame implements ActionListener{
 

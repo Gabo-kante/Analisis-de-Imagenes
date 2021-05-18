@@ -10,7 +10,7 @@ import java.awt.Image;
 
 /**
  *
- * @author carli
+ * @author gabri
  */
 public class JInternalFrameLn extends javax.swing.JInternalFrame {
 

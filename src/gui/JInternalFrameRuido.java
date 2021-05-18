@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author carli
+ * @author gabri
  */
 public class JInternalFrameRuido extends javax.swing.JInternalFrame implements ActionListener {
 
@@ -57,7 +57,7 @@ public class JInternalFrameRuido extends javax.swing.JInternalFrame implements A
         jSlider1.setPaintLabels(true);
         jSlider1.setPaintTicks(true);
 
-        jLabel1.setText("% de ruido");
+        jLabel1.setText("Porcentaje (%) de ruido");
 
         ruidos.add(jRadioButton1);
         jRadioButton1.setText("Sal");
@@ -91,9 +91,6 @@ public class JInternalFrameRuido extends javax.swing.JInternalFrame implements A
                         .addGap(0, 72, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(180, 180, 180))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel2)
                                     .addGroup(layout.createSequentialGroup()
@@ -102,11 +99,14 @@ public class JInternalFrameRuido extends javax.swing.JInternalFrame implements A
                                         .addComponent(jRadioButton2)))
                                 .addGap(49, 49, 49)
                                 .addComponent(jRadioButton3)
-                                .addGap(67, 67, 67))))))
+                                .addGap(67, 67, 67))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addContainerGap())))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(144, 144, 144))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +122,7 @@ public class JInternalFrameRuido extends javax.swing.JInternalFrame implements A
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(34, 34, 34))
         );

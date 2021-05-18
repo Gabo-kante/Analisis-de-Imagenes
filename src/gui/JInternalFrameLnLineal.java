@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author carli
+ * @author gabri
  */
 public class JInternalFrameLnLineal extends javax.swing.JInternalFrame implements ActionListener{
 

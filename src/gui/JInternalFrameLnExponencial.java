@@ -14,7 +14,7 @@ import javax.swing.event.ChangeListener;
 
 /**
  *
- * @author carli
+ * @author gabri
  */
 public class JInternalFrameLnExponencial extends javax.swing.JInternalFrame implements ActionListener{
 
