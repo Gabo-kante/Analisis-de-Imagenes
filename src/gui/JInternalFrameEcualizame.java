@@ -13,14 +13,14 @@ import java.awt.Image;
  *
  * @author gabri
  */
-public class JInternalFrameEcualizar extends javax.swing.JInternalFrame {
+public class JInternalFrameEcualizame extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form JInternalFrameEcualizame
      */
     private JInternalFrameImagen internal;
     private Image imagenOriginal;
-    public JInternalFrameEcualizar(JInternalFrameImagen internal,Image imagenOriginal) {
+    public JInternalFrameEcualizame(JInternalFrameImagen internal,Image imagenOriginal) {
         this.internal = internal;
         this.imagenOriginal = imagenOriginal;
         initComponents();

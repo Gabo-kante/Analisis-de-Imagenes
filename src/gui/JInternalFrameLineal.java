@@ -13,14 +13,14 @@ import java.awt.event.ActionListener;
  *
  * @author gabri
  */
-public class JInternalFrameLnLineal extends javax.swing.JInternalFrame implements ActionListener{
+public class JInternalFrameLineal extends javax.swing.JInternalFrame implements ActionListener{
 
     /**
      * Creates new form JInternalFrameLineal
      */
     private JInternalFrameImagen internal;
     private Image imagenOriginal;
-    public JInternalFrameLnLineal(JInternalFrameImagen internal, Image imagenOriginal) {
+    public JInternalFrameLineal(JInternalFrameImagen internal, Image imagenOriginal) {
         this.internal = internal;
         this.imagenOriginal = imagenOriginal;
         initComponents();

@@ -10,11 +10,12 @@ import espacial.Histograma;
 import graficar.Grafica;
 import gui.JFramePrincipal;
 import gui.JInternalFrameConvolucion;
-import gui.JInternalFrameEcualizar;
-import gui.JInternalFrameLnExponencial;
+import gui.JInternalFrameEcualizame;
+import gui.JInternalFrameExponencial;
+import gui.JInternalFrameFrecuencias;
 import gui.JInternalFrameIluminacion;
 import gui.JInternalFrameImagen;
-import gui.JInternalFrameLnLineal;
+import gui.JInternalFrameLineal;
 import gui.JInternalFrameLn;
 import gui.JInternalFrameRuido;
 import java.awt.Image;
@@ -44,7 +45,7 @@ public class IluminaListener implements ActionListener{
         }else if(item.getText().equals("Lineal")){
             JInternalFrameImagen internal = (JInternalFrameImagen) this.principal.getjDesktopPanePrincipal().getSelectedFrame();     
             Image imagen = internal.getImagenOriginal();
-            JInternalFrameLnLineal li = new JInternalFrameLnLineal(internal,imagen);
+            JInternalFrameLineal li = new JInternalFrameLineal(internal,imagen);
             li.setVisible(true);
             this.principal.getjDesktopPanePrincipal().add(li);
         }else if(item.getText().equals("Logarítmica")){
@@ -58,14 +59,14 @@ public class IluminaListener implements ActionListener{
         }else if(item.getText().equals("Exponencial")){
             JInternalFrameImagen internal = (JInternalFrameImagen) this.principal.getjDesktopPanePrincipal().getSelectedFrame();     
             Image imagen = internal.getImagenOriginal();
-            JInternalFrameLnExponencial li = new JInternalFrameLnExponencial(internal,imagen);
+            JInternalFrameExponencial li = new JInternalFrameExponencial(internal,imagen);
             //JInternalFrameLineal li = new JInternalFrameLineal(internal,imagen);
             li.setVisible(true);
             this.principal.getjDesktopPanePrincipal().add(li);
         }else if(item.getText().equals("Ecualizar")){
             JInternalFrameImagen internal = (JInternalFrameImagen) this.principal.getjDesktopPanePrincipal().getSelectedFrame();     
             Image imagen = internal.getImagenOriginal();
-            JInternalFrameEcualizar li = new JInternalFrameEcualizar(internal,imagen);
+            JInternalFrameEcualizame li = new JInternalFrameEcualizame(internal,imagen);
             //JInternalFrameLineal li = new JInternalFrameLineal(internal,imagen);
             li.setVisible(true);
             this.principal.getjDesktopPanePrincipal().add(li);
@@ -76,13 +77,29 @@ public class IluminaListener implements ActionListener{
             //JInternalFrameLineal li = new JInternalFrameLineal(internal,imagen);
             li.setVisible(true);
             this.principal.getjDesktopPanePrincipal().add(li);
-        }else if(item.getText().equals("Ruido Sal y Pimienta")){
+        }else if(item.getText().equals("Sal y pimienta")){
             JInternalFrameImagen internal = (JInternalFrameImagen) this.principal.getjDesktopPanePrincipal().getSelectedFrame();     
             Image imagen = internal.getImagenOriginal();
             JInternalFrameRuido li = new JInternalFrameRuido(imagen,internal,principal);
             //JInternalFrameLineal li = new JInternalFrameLineal(internal,imagen);
             li.setVisible(true);
             this.principal.getjDesktopPanePrincipal().add(li);
+        }else if(item.getText().equals("Elimina el ruido")){
+            JInternalFrameImagen internal = (JInternalFrameImagen) this.principal.getjDesktopPanePrincipal().getSelectedFrame();     
+            Image imagen = internal.getImagenOriginal();
+            
+            //JInternalFrameLineal li = new JInternalFrameLineal(internal,imagen);
+            internal.setImagen(espacial.Ruidos.limpiaRuido(imagen));
+            //this.principal.getjDesktopPanePrincipal().add(li);
+        }else if(item.getText().equals("Frecuencias")){
+            JInternalFrameImagen internal = (JInternalFrameImagen) this.principal.getjDesktopPanePrincipal().getSelectedFrame();     
+            Image imagen = internal.getImagenOriginal();
+            JInternalFrameFrecuencias fr = new JInternalFrameFrecuencias(imagen,internal,this.principal);
+            fr.setVisible(true);
+            this.principal.getjDesktopPanePrincipal().add(fr);
+            //JInternalFrameLineal li = new JInternalFrameLineal(internal,imagen);
+            //internal.setImagen(espacial.Ruidos.limpiaRuido(imagen));
+            //this.principal.getjDesktopPanePrincipal().add(li);
         }
     }
 }

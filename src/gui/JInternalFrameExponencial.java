@@ -16,14 +16,14 @@ import javax.swing.event.ChangeListener;
  *
  * @author gabri
  */
-public class JInternalFrameLnExponencial extends javax.swing.JInternalFrame implements ActionListener{
+public class JInternalFrameExponencial extends javax.swing.JInternalFrame implements ActionListener{
 
     /**
      * Creates new form JInternalFrameExponencial
      */
     private JInternalFrameImagen internal;
     private Image imagenOriginal;
-    public JInternalFrameLnExponencial(JInternalFrameImagen internal, Image imagenOriginal) {
+    public JInternalFrameExponencial(JInternalFrameImagen internal, Image imagenOriginal) {
         this.internal = internal;
         this.imagenOriginal = imagenOriginal;
         initComponents(); 
