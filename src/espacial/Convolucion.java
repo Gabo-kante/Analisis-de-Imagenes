@@ -5,9 +5,10 @@
  */
 package espacial;
 
-import java.awt.Color;
+
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.Color;
 
 /**
  *
@@ -15,19 +16,58 @@ import java.awt.image.BufferedImage;
  */
 public class Convolucion {
 
-    public static Image convolucioname(Image imagen, int[][] mascara, int div, int offset) {
+    private static int[][] kirsch1 = {{-3, -3, 5}, {-3, 0, 5}, {-3, -3, 5}};
+    private static int[][] kirsch2 = {{-3, 5, 5}, {-3, 0, 5}, {-3, -3, -3}};
+    private static int[][] kirsch3 = {{5, 5, 5}, {-3, 0, -3}, {-3, -3, -3}};
+    private static int[][] kirsch4 = {{5, 5, -3}, {5, 0, -3}, {-3, -3, -3}};
+    private static int[][] kirsch5 = {{5, -3, -3}, {5, 0, -3}, {5, -3, -3}};
+    private static int[][] kirsch6 = {{-3, -3, -3}, {5, 0, -3}, {5, 5, -3}};
+    private static int[][] kirsch7 = {{-3, -3, -3}, {-3, 0, -3}, {5, 5, 5}};
+    private static int[][] kirsch8 = {{-3, -3, -3}, {-3, 0, 5}, {-3, 5, 5}};
+    public static int[][][] arregloMascarasKIRCH = {kirsch1, kirsch2, kirsch3, kirsch4, kirsch5, kirsch6, kirsch7, kirsch8};
+
+    public static Image aplicarConvolucion(Image imagen, int[][] mascara, int div, int offset) {
+
         BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagen);
-        BufferedImage nuevo = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+        BufferedImage bnuevo = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+        // recorres el buffer
         for (int x = 0; x < bi.getWidth(); x++) {
             for (int y = 0; y < bi.getHeight(); y++) {
-                int rgb = nuevoTono(x, y, bi, mascara, div, offset);
-                nuevo.setRGB(x, y, rgb);
+                int rgb = calcularNuevoTono(x, y, bi, mascara, div, offset);
+                bnuevo.setRGB(x, y, rgb);
             }
         }
-        return herramientas.HerramientasImagen.toImage(nuevo);
+        return herramientas.HerramientasImagen.toImage(bnuevo);
     }
 
-    public static int nuevoTono(int x, int y, BufferedImage original, int[][] mascara, int div, int offset) {
+    public static Image aplicarConvolucionKIRCH(Image imagen) {
+
+        Image nueva = null;
+        int tamMASK = arregloMascarasKIRCH[0][1].length;
+       
+        for (int mascaraN = 0; mascaraN < arregloMascarasKIRCH.length; mascaraN++) {
+            int[][] mascaraAUX = new int[tamMASK][tamMASK];
+            for (int x = 0; x < tamMASK; x++) {
+                for (int y = 0; y < tamMASK; y++) {
+                    mascaraAUX[x][y] = arregloMascarasKIRCH[mascaraN][x][y];
+                    System.out.print(mascaraAUX[x][y] + " ");
+                }
+                System.out.println(" ");
+            }
+            System.out.println(" ");
+            if(mascaraN == 0){
+                nueva = aplicarConvolucion(imagen, mascaraAUX, 0, 0);
+            }else{
+                nueva = aplicarConvolucion(nueva, mascaraAUX, 0, 0);
+            }
+            
+            
+        }
+
+        return nueva;
+    }
+
+    public static int calcularNuevoTono(int x, int y, BufferedImage original, int[][] mascara, int div, int offset) {
         int auxx = 0, auxy = 0;
         if (mascara.length == 3) {
             auxx = x - 1;
@@ -36,16 +76,16 @@ public class Convolucion {
             auxx = x - 2;
             auxy = y - 2;
         }
-        int R = 0, G = 0, B = 0;
-        Color aux = null;
+        int auxR = 0, auxG = 0, auxB = 0;
+        Color color = null;
         for (int i = 0; i < mascara.length; i++) {
             for (int j = 0; j < mascara.length; j++) {
                 try {
                     if (mascara[i][j] != 0) {
-                        aux = new Color(original.getRGB(auxx, auxy));
-                        R += aux.getRed() * mascara[i][j];
-                        G += aux.getGreen() * mascara[i][j];
-                        B += aux.getBlue() * mascara[i][j];
+                        color = new Color(original.getRGB(auxx, auxy));
+                        auxR += color.getRed() * mascara[i][j];
+                        auxG += color.getGreen() * mascara[i][j];
+                        auxB += color.getBlue() * mascara[i][j];
                     }
                 } catch (Exception e) {
 
@@ -60,12 +100,12 @@ public class Convolucion {
             }
         }
         if (div != 0) {
-            R /= div;
-            G /= div;
-            B /= div;
+            auxR /= div;
+            auxG /= div;
+            auxB /= div;
         }
-        aux = new Color(verificar(R + offset), verificar(G + offset), verificar(B + offset));
-        return aux.getRGB();
+        color = new Color(verificar(auxR + offset), verificar(auxG + offset), verificar(auxB + offset));
+        return color.getRGB();
     }
 
     public static int verificar(int valor) {
@@ -78,24 +118,5 @@ public class Convolucion {
         return valor;
     }
 
-    public static Image kirsch(Image imagen) {
-        //BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagen);
-       // BufferedImage nuevo = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
-        double[][][] kirschi = espacial.MascarasBordes.arregloMascaras;
-        int[][] mascara = new int[kirschi[0][1].length][kirschi[0][1].length];
-        Image nuevo = null;
-        Image aux = null;
-        for (int z= 0; z<kirschi.length; z++) {
-            for (int x = 0; x < kirschi[0][1].length; x++) {
-                for (int y = 0; y < kirschi[0][1].length; y++) {
-                    mascara[x][y]=(int) kirschi[z][x][y];
-                    System.out.println(mascara[x][y]);
-                }
-            }
-            nuevo = convolucioname(imagen,mascara,0,0);
-            mascara= new int[kirschi[0][1].length][kirschi[0][1].length];
-        }
 
-        return nuevo;
-    }
 }

@@ -37,9 +37,6 @@ public class JInternalFrameLn extends javax.swing.JInternalFrame {
 
         jSlider1 = new javax.swing.JSlider();
 
-        setClosable(true);
-        setIconifiable(true);
-
         jSlider1.setMajorTickSpacing(10);
         jSlider1.setMaximum(255);
         jSlider1.setPaintLabels(true);

@@ -5,29 +5,53 @@
  */
 package gui;
 
+import espacial.SalPimienta;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 /**
  *
  * @author gabri
  */
-public class JInternalFrameRuido extends javax.swing.JInternalFrame implements ActionListener {
+public class JInternalFrameRuido extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form JInternalFrameRuido
+     * Creates new form JInternalFrameSalPimienta
      */
-    Image imagen;
-    JInternalFrameImagen internal;
-    JFramePrincipal princial;
+    
+    private JInternalFrameImagen internal;
+    private JFramePrincipal framePrincipal;
+    private Image imagenConRuido;
 
-    public JInternalFrameRuido(Image imagen, JInternalFrameImagen internal, JFramePrincipal principal) {
-        initComponents();
-        this.imagen = imagen;
+
+    private Image imagenOriginal;
+
+    public JInternalFrameRuido(JInternalFrameImagen internal, JFramePrincipal framePrincipal) {
+
         this.internal = internal;
-        this.princial = principal;
-        this.jButton1.addActionListener(this);
+        this.framePrincipal = framePrincipal;
+
+        initComponents();
+        
+
+        this.imagenOriginal = herramientas.HerramientasImagen.copiarImagen(internal.getImagenOriginal());
+        this.jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int porcentaje = jSlider1.getValue();
+                boolean sal = jRadioButtonSal.isSelected();
+                boolean pimienta = jRadioButtonPimienta.isSelected();
+                
+                    imagenConRuido = SalPimienta.aplicarSalPimienta(porcentaje, pimienta, sal, imagenOriginal);;
+                    internal.setImagen(imagenConRuido);
+                    
+                
+
+            }
+        });
 
     }
 
@@ -40,132 +64,96 @@ public class JInternalFrameRuido extends javax.swing.JInternalFrame implements A
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ruidos = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jSlider1 = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
+        jRadioButtonSal = new javax.swing.JRadioButton();
+        jRadioButtonPimienta = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         setClosable(true);
         setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jSlider1.setMajorTickSpacing(5);
-        jSlider1.setMinorTickSpacing(1);
         jSlider1.setPaintLabels(true);
         jSlider1.setPaintTicks(true);
+        jSlider1.setSnapToTicks(true);
+        jSlider1.setValue(0);
+        jSlider1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setText("% de ruido");
-
-        ruidos.add(jRadioButton1);
-        jRadioButton1.setText("Sal");
-
-        ruidos.add(jRadioButton2);
-        jRadioButton2.setText("Pimienta");
-
-        ruidos.add(jRadioButton3);
-        jRadioButton3.setText("Ambos");
-
-        jLabel2.setText("Tipos de ruido");
-
-        jButton1.setText("Genera");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jRadioButtonSal.setText("Sal");
+        jRadioButtonSal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jRadioButtonSalActionPerformed(evt);
             }
         });
+
+        jRadioButtonPimienta.setText("Pimienta");
+        jRadioButtonPimienta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonPimientaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Aplicar");
+
+        jRadioButton1.setText("Sal y Pimienta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
+                .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jRadioButtonSal))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 72, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(180, 180, 180))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
-                                        .addGap(70, 70, 70)
-                                        .addComponent(jRadioButton2)))
-                                .addGap(49, 49, 49)
-                                .addComponent(jRadioButton3)
-                                .addGap(67, 67, 67))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButtonPimienta))
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jLabel2)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonSal)
+                    .addComponent(jRadioButtonPimienta))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(34, 34, 34))
+                    .addComponent(jButton1)
+                    .addComponent(jRadioButton1))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jRadioButtonSalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jRadioButtonSalActionPerformed
+
+    private void jRadioButtonPimientaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPimientaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonPimientaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButtonPimienta;
+    private javax.swing.JRadioButton jRadioButtonSal;
     private javax.swing.JSlider jSlider1;
-    public static javax.swing.ButtonGroup ruidos;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (this.jRadioButton1.isSelected()) {
-            JInternalFrameImagen nuevo;
-            Image nuevita = espacial.Ruidos.aplicandoSal(imagen, this.jSlider1.getValue());
-            nuevo = new JInternalFrameImagen(nuevita);
-            nuevo.setVisible(true);
-            this.princial.getjDesktopPanePrincipal().add(nuevo);
-        }else if(this.jRadioButton2.isSelected()){
-            JInternalFrameImagen nuevo;
-            Image nuevita = espacial.Ruidos.aplicandoPimienta(imagen, this.jSlider1.getValue());
-            nuevo = new JInternalFrameImagen(nuevita);
-            nuevo.setVisible(true);
-            this.princial.getjDesktopPanePrincipal().add(nuevo);
-        }else if(this.jRadioButton3.isSelected()){
-            JInternalFrameImagen nuevo;
-            Image nuevita = espacial.Ruidos.aplicandoAmbos(imagen, this.jSlider1.getValue());
-            nuevo = new JInternalFrameImagen(nuevita);
-            nuevo.setVisible(true);
-            this.princial.getjDesktopPanePrincipal().add(nuevo);
-        }
-    }
 }

@@ -8,8 +8,7 @@ package fft;
 import espacial.Convolucion;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map;
+
 
 /**
  *

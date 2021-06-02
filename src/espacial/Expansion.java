@@ -37,7 +37,7 @@ public class Expansion {
         nueva = herramientas.HerramientasImagen.toImage(bi);
         return nueva;
     }
-
+    
     public static Image ExpandeLog(Image imagen, int alpha) {
         Image nueva = null;
         BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagen);
@@ -51,6 +51,7 @@ public class Expansion {
                 int r = (int) ((alpha * Math.log(1 + pixel.getRed())) / (Math.log(1 + alpha)));
                 int g = (int) ((alpha * Math.log(1 + pixel.getGreen())) / (Math.log(1 + alpha)));
                 int b = (int) ((alpha * Math.log(1 + pixel.getBlue())) / (Math.log(1 + alpha)));
+
                 // validamos 
                 pixel = new Color(verificar(r), verificar(g), verificar(b));
                 bi.setRGB(x, y, pixel.getRGB());
@@ -70,9 +71,9 @@ public class Expansion {
             for (int y = 0; y < bi.getHeight(); y++) {
                 // obtener el color
                 Color pixel = new Color(bi.getRGB(x, y));
-                int r = verificar((int) (Math.pow(1+z, pixel.getRed()) / z));
-                int g = verificar((int) (Math.pow(1+z, pixel.getGreen()) / z));
-                int b = verificar((int) (Math.pow(1+z, pixel.getBlue()) / z));
+                int r = verificar((int) (Math.pow(1 + z, pixel.getRed()) / z));
+                int g = verificar((int) (Math.pow(1 + z, pixel.getGreen()) / z));
+                int b = verificar((int) (Math.pow(1 + z, pixel.getBlue()) / z));
 
                 // validamos 
                 pixel = new Color(r, g, b);

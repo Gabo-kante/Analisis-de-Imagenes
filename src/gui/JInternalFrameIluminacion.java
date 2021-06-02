@@ -10,23 +10,58 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import org.jfree.chart.ChartColor;
 
 /**
  *
- * @author gabri
+ * @author working
  */
-public class JInternalFrameIluminacion extends javax.swing.JInternalFrame implements ActionListener{
+public class JInternalFrameIluminacion extends javax.swing.JInternalFrame {
+
+    private JInternalFrameImagen internal;
+    private JFramePrincipal framePrincipal;
+    private Image imagenRecortada;
+    int valorSlider = 128;
+    
+    
+    private Image imagenOriginal;
 
     /**
-     * Creates new form JInternalFrameIluminación
+     * Creates new form JInternalFrameBinario
      */
-    private JInternalFrameImagen internal;
-    private Image imagenOriginal;
-    public JInternalFrameIluminacion(JInternalFrameImagen internal, Image imagenOriginal) {
+    public JInternalFrameIluminacion(JInternalFrameImagen internal, JFramePrincipal framePrincipal) {
+
         this.internal = internal;
-        this.imagenOriginal = imagenOriginal;
+        this.framePrincipal = framePrincipal;
+        
+
         initComponents();
-        jButton1.addActionListener(this);
+        
+       this.imagenOriginal = herramientas.HerramientasImagen.copiarImagen(internal.getImagenOriginal());
+        this.jButtonIluminacion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               int valor = jSliderIluminacion.getValue();
+                BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
+                Color color;
+                int i, j, aux;
+                for (j = 0; j < bi.getHeight(); j++) {
+                    for (i = 0; i < bi.getWidth(); i++) {
+                        color = new Color(bi.getRGB(i, j));
+                        int r = color.getRed() + valor;
+                        int g = color.getGreen() + valor;
+                        int b = color.getBlue() + valor;
+
+                        color = new Color(herramientas.HerramientasImagen.verificarNivelRGB(r), herramientas.HerramientasImagen.verificarNivelRGB(g), herramientas.HerramientasImagen.verificarNivelRGB(b));
+                        bi.setRGB(i, j, color.getRGB());
+                    }
+                }
+                Image nueva = herramientas.HerramientasImagen.toImage(bi);
+                internal.setImagen(nueva);
+                System.out.println(valor);
+            }
+        });
+  
     }
 
     /**
@@ -38,107 +73,68 @@ public class JInternalFrameIluminacion extends javax.swing.JInternalFrame implem
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSlider1 = new javax.swing.JSlider();
-        jButton1 = new javax.swing.JButton();
+        jButtonIluminacion = new javax.swing.JButton();
+        jSliderIluminacion = new javax.swing.JSlider();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
+        setTitle("Cambiar iluminación");
 
-        jSlider1.setMajorTickSpacing(10);
-        jSlider1.setMaximum(255);
-        jSlider1.setMinimum(-255);
-        jSlider1.setMinorTickSpacing(5);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setToolTipText("");
-        jSlider1.setValue(0);
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+        jButtonIluminacion.setText("Cambiar iluminacion");
+        jButtonIluminacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIluminacionActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Iluminar");
+        jSliderIluminacion.setMajorTickSpacing(51);
+        jSliderIluminacion.setMaximum(255);
+        jSliderIluminacion.setMinimum(-255);
+        jSliderIluminacion.setPaintLabels(true);
+        jSliderIluminacion.setPaintTicks(true);
+        jSliderIluminacion.setToolTipText("");
+        jSliderIluminacion.setValue(0);
+        jSliderIluminacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jSliderIluminacion.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderIluminacionStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, 1059, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(454, 454, 454))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonIluminacion, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jSliderIluminacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
+                .addComponent(jSliderIluminacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonIluminacion)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        // TOBufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
-        BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
-        Color color ;
-        
-                int i,j,aux;
-                for(j = 0; j< bi.getHeight(); j++){
-                    for(i = 0; i < bi.getWidth(); i++){
-                     color = new Color(bi.getRGB(i,j));
-                     int r = color.getRed()+jSlider1.getValue();
-                     int g = color.getGreen()+jSlider1.getValue();
-                     int b = color.getBlue()+jSlider1.getValue();
-                     
-                     color = new Color(verificar(r),verificar(g),verificar(b));
-                     bi.setRGB(i, j, color.getRGB());
-                    }
-                }
-            Image nueva = herramientas.HerramientasImagen.toImage(bi);
-            
-            this.internal.setImagen(nueva);
-    }//GEN-LAST:event_jSlider1StateChanged
+    private void jButtonIluminacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIluminacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonIluminacionActionPerformed
+
+    private void jSliderIluminacionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderIluminacionStateChanged
+        valorSlider = this.jSliderIluminacion.getValue();        
+    }//GEN-LAST:event_jSliderIluminacionStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JButton jButtonIluminacion;
+    private javax.swing.JSlider jSliderIluminacion;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-         BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
-        Color color ;
-                int i,j,aux;
-                for(j = 0; j< bi.getHeight(); j++){
-                    for(i = 0; i < bi.getWidth(); i++){
-                     color = new Color(bi.getRGB(i,j));
-                     int r = color.getRed()+jSlider1.getValue();
-                     int g = color.getGreen()+jSlider1.getValue();
-                     int b = color.getBlue()+jSlider1.getValue();
-                     
-                     color = new Color(verificar(r),verificar(g),verificar(b));
-                     bi.setRGB(i, j, color.getRGB());
-                    }
-                }
-            Image nueva = herramientas.HerramientasImagen.toImage(bi);
-            
-            this.internal.setImagen(nueva);
-    }
-    
-    public int verificar(int valor){
-        if(valor>255) return 255;
-        if(valor<0) return 0;
-        return valor;
-    }
 }

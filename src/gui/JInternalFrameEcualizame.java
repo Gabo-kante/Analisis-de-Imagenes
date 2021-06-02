@@ -5,7 +5,7 @@
  */
 package gui;
 
-import espacial.BinarioAutomatico;
+import espacial.UmbralAuto;
 import espacial.Expansion;
 import java.awt.Image;
 
@@ -72,7 +72,7 @@ public class JInternalFrameEcualizame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        Image i = Expansion.ecualizacion(BinarioAutomatico.devuelveHisto(imagenOriginal), imagenOriginal, this.jSlider1.getValue());
+        Image i = Expansion.ecualizacion(UmbralAuto.devolverHistograma(imagenOriginal), imagenOriginal, this.jSlider1.getValue());
         this.internal.setImagen(i);
     }//GEN-LAST:event_jSlider1StateChanged
 
