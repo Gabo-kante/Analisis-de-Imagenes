@@ -15,11 +15,11 @@ import org.jfree.chart.plot.XYPlot;
  * @author gabri
  */
 public class Histograma {
-
+    
     private Image imagenOriginal;
-    private int[] r;
-    private int[] g;
-    private int[] b;
+    private int[]r;
+    private int[]g;
+    private int[]b;
 
     public Histograma(Image imagen) {
         this.imagenOriginal = imagen;
@@ -27,13 +27,12 @@ public class Histograma {
         this.g = new int[256];
         this.b = new int[256];
     }
-
-    public void calcularHistogramas() {
+    public void calcularHistogramas(){
         // recorrer la imagen
         BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
         Color color;
-        for (int x = 0; x < bi.getWidth(); x++) {
-            for (int y = 0; y < bi.getHeight(); y++) {
+        for(int x=0; x<bi.getWidth();x++)
+            for(int y=0; y< bi.getHeight();y++){
                 // extraer el color
                 color = new Color(bi.getRGB(x, y));
                 int r = color.getRed(); // (0-255)
@@ -42,20 +41,25 @@ public class Histograma {
                 this.r[r]++;
                 this.g[g]++;
                 this.b[b]++;
-
+                
             }
-        }
-
+        
     }
+       
+    
+    public void graficar (){
+      Grafica graph = new Grafica("Magnitud","Frecuencia","Histograma de imagen");
+        graph.crearSerie("Rojo", r);
+        graph.crearSerie("Azul", b);
+        graph.crearSerie("Verde",g);
+        
+        graph.mostrarGrafica();
 
-    public void graficar() {
-        Grafica g1 = new Grafica("Intensidad", "Repeticiones", "Histograma del RGB de una imagen");
-        g1.crearSerie("Rojo", r);
-        g1.crearSerie("Azul", b);
-        g1.crearSerie("Verde", g);
-
-        g1.mostrarGrafica();
-
+     /*   XYPlot plot = graph.getGrafica().getXYPlot();
+        plot.getRenderer().setSeriesPaint(0, new Color(Color.RED.getRGB()));
+        plot.getRenderer().setSeriesPaint(1, new Color(Color.BLUE.getRGB()));
+        plot.getRenderer().setSeriesPaint(2, new Color(Color.GREEN.getRGB()));
+        graph.muestraGrafica();*/
     }
 
     /**
@@ -78,5 +82,5 @@ public class Histograma {
     public int[] getB() {
         return b;
     }
-
+    
 }

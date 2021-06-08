@@ -5,10 +5,9 @@
  */
 package gui;
 
-
+import listeners.ExtraerImagenListener1;
 import listeners.InternalFrameListener;
 import listeners.ModificarImagenListener;
-import listeners.RecorteImagenListener;
 
 /**
  *
@@ -23,43 +22,18 @@ public class JFramePrincipal extends javax.swing.JFrame {
         initComponents();
         this.jMenuItem1.addActionListener(new InternalFrameListener(this));
         this.jMenuItem2.addActionListener(new ModificarImagenListener(this));
-        this.jMenuItem3.addActionListener(new RecorteImagenListener(this));
-        
-        //para los filtros
+        this.jMenuItem3.addActionListener(new ExtraerImagenListener1(this));
+        this.jMenuItem4.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem5.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem6.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem7.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem8.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem9.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem10.addActionListener(new ModificarImagenListener(this));
-        
-        //histograma
-        this.jMenuItem4.addActionListener(new ModificarImagenListener(this));
-        
-        //iluminacion 
-        this.jMenuItem5.addActionListener(new ModificarImagenListener(this));
-        this.jMenuItemEXPlineal.addActionListener(new ModificarImagenListener(this));
-        this.jMenuItemEXPlogaritmica.addActionListener(new ModificarImagenListener(this));
-        this.jMenuItemEXPexponencial.addActionListener(new ModificarImagenListener(this));
-        
-        //Binario con 2 silider
-        this.jMenuItemUmbral2Sliders.addActionListener(new ModificarImagenListener(this));
-        
-        //binarioAuto
-        this.jMenuItemUmbralAuto.addActionListener(new ModificarImagenListener(this));
-        this.jMenuItemUmbralAutoOtsu.addActionListener(new ModificarImagenListener(this));
-        
-        //ecualizar
-        this.jMenuItemEQ.addActionListener(new ModificarImagenListener(this));
-        
-        //convolucion
-        this.jMenuItemConvolucionMascara.addActionListener(new ModificarImagenListener(this));
-        this.jMenuItemConvolucionKIRCH.addActionListener(new ModificarImagenListener(this));
-        
-        //sal pimienta
-        this.jMenuItemSalPimienta.addActionListener(new ModificarImagenListener(this));
-        
-        //FTT
-        this.jMenuItemFTT.addActionListener(new ModificarImagenListener(this));
-        
-        
+        this.jMenuItem11.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem12.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem14.addActionListener(new ModificarImagenListener(this));
+
     }
 
     /**
@@ -71,34 +45,23 @@ public class JFramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem7 = new javax.swing.JMenuItem();
         jDesktopPanePrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItemUmbral2Sliders = new javax.swing.JMenuItem();
-        jMenuItemUmbralAuto = new javax.swing.JMenuItem();
-        jMenuItemUmbralAutoOtsu = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuExpansion = new javax.swing.JMenu();
-        jMenuItemEXPlineal = new javax.swing.JMenuItem();
-        jMenuItemEXPlogaritmica = new javax.swing.JMenuItem();
-        jMenuItemEXPexponencial = new javax.swing.JMenuItem();
-        jMenuItemEQ = new javax.swing.JMenuItem();
-        jMenuExpansionConvolucion = new javax.swing.JMenu();
-        jMenuItemConvolucionMascara = new javax.swing.JMenuItem();
-        jMenuItemConvolucionKIRCH = new javax.swing.JMenuItem();
-        jMenuItemSalPimienta = new javax.swing.JMenuItem();
-        jMenuItemFTT = new javax.swing.JMenuItem();
-
-        jMenuItem7.setText("jMenuItem7");
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +79,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu1.setText("Imagen");
 
         jMenuItem1.setText("AbrirImagen");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -123,81 +91,55 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu2.setText("Espacial");
 
         jMenuItem2.setText("Modificar Pixeles");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem4.setText("Histograma");
-        jMenu2.add(jMenuItem4);
-
-        jMenuItem3.setText("Recorte");
+        jMenuItem3.setText("Intercambiar Pixeles");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
-        jMenuItem9.setText("Filtro Negativo");
-        jMenu2.add(jMenuItem9);
+        jMenuItem4.setText("Filtros");
+        jMenu2.add(jMenuItem4);
 
-        jMenuItem6.setText("Escala de Grises");
-        jMenu2.add(jMenuItem6);
-
-        jMenuItem10.setText("Imagen Binaria");
-        jMenu2.add(jMenuItem10);
-
-        jMenuItemUmbral2Sliders.setText("ImagenBinaria 2 Sliders");
-        jMenu2.add(jMenuItemUmbral2Sliders);
-
-        jMenuItemUmbralAuto.setText("Umbralizacion Automatica");
-        jMenu2.add(jMenuItemUmbralAuto);
-
-        jMenuItemUmbralAutoOtsu.setText("Umbralizacion Automatica Otsu");
-        jMenu2.add(jMenuItemUmbralAutoOtsu);
-
-        jMenuItem5.setText("Modificar Iluminación");
+        jMenuItem5.setText("Histograma");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
-        jMenuExpansion.setText("Expansión");
+        jMenuItem6.setText("Iluminación");
+        jMenu2.add(jMenuItem6);
 
-        jMenuItemEXPlineal.setText("Lineal");
-        jMenuExpansion.add(jMenuItemEXPlineal);
+        jMenuItem7.setText("Expansiones");
+        jMenu2.add(jMenuItem7);
 
-        jMenuItemEXPlogaritmica.setText("Logarítmica");
-        jMenuItemEXPlogaritmica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEXPlogaritmicaActionPerformed(evt);
-            }
-        });
-        jMenuExpansion.add(jMenuItemEXPlogaritmica);
+        jMenuItem8.setText("Convolución 3x3");
+        jMenu2.add(jMenuItem8);
 
-        jMenuItemEXPexponencial.setText("Exponencial");
-        jMenuExpansion.add(jMenuItemEXPexponencial);
+        jMenuItem9.setText("Convolución 5x5");
+        jMenu2.add(jMenuItem9);
 
-        jMenu2.add(jMenuExpansion);
+        jMenuItem10.setText("Kirsch");
+        jMenu2.add(jMenuItem10);
 
-        jMenuItemEQ.setText("Ecualizar");
-        jMenu2.add(jMenuItemEQ);
+        jMenuItem11.setText("Ruido Pimienta/Sal");
+        jMenu2.add(jMenuItem11);
 
-        jMenuExpansionConvolucion.setText("Convolución");
+        jMenuItem12.setText("Eliminar Ruido");
+        jMenu2.add(jMenuItem12);
 
-        jMenuItemConvolucionMascara.setText("Mascara");
-        jMenuItemConvolucionMascara.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemConvolucionMascaraActionPerformed(evt);
-            }
-        });
-        jMenuExpansionConvolucion.add(jMenuItemConvolucionMascara);
-
-        jMenuItemConvolucionKIRCH.setText("KIRCH");
-        jMenuItemConvolucionKIRCH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemConvolucionKIRCHActionPerformed(evt);
-            }
-        });
-        jMenuExpansionConvolucion.add(jMenuItemConvolucionKIRCH);
-
-        jMenu2.add(jMenuExpansionConvolucion);
-
-        jMenuItemSalPimienta.setText("Ruido Sal y Pimienta");
-        jMenu2.add(jMenuItemSalPimienta);
-
-        jMenuItemFTT.setText("FTT (Frecuencias)");
-        jMenu2.add(jMenuItemFTT);
+        jMenuItem14.setText("Frecuencias Filtrado Grises");
+        jMenu2.add(jMenuItem14);
 
         jMenuBar1.add(jMenu2);
 
@@ -217,17 +159,21 @@ public class JFramePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemConvolucionKIRCHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConvolucionKIRCHActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemConvolucionKIRCHActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItemConvolucionMascaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConvolucionMascaraActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemConvolucionMascaraActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItemEXPlogaritmicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEXPlogaritmicaActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemEXPlogaritmicaActionPerformed
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,28 +216,19 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuExpansion;
-    private javax.swing.JMenu jMenuExpansionConvolucion;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenuItem jMenuItemConvolucionKIRCH;
-    private javax.swing.JMenuItem jMenuItemConvolucionMascara;
-    private javax.swing.JMenuItem jMenuItemEQ;
-    private javax.swing.JMenuItem jMenuItemEXPexponencial;
-    private javax.swing.JMenuItem jMenuItemEXPlineal;
-    private javax.swing.JMenuItem jMenuItemEXPlogaritmica;
-    private javax.swing.JMenuItem jMenuItemFTT;
-    private javax.swing.JMenuItem jMenuItemSalPimienta;
-    private javax.swing.JMenuItem jMenuItemUmbral2Sliders;
-    private javax.swing.JMenuItem jMenuItemUmbralAuto;
-    private javax.swing.JMenuItem jMenuItemUmbralAutoOtsu;
     // End of variables declaration//GEN-END:variables
 
     /**
